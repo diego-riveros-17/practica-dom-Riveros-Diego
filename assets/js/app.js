@@ -1,7 +1,4 @@
-// (() => {
-//   console.log("Función flecha auto-invocada");
-// })();
-const personajes = [
+let personajes = [
   {
     id: 1,
     nombre: "A-Bomb",
@@ -46,10 +43,12 @@ const contenedor = document.querySelector("#cardSuperheroe");
 // });
 
 const cargarSuperheroes = () => {
+  contenedor.innerHTML = "";
+
   personajes.forEach((personaje) => {
     // console.log(personaje);
-    contenedor.innerHTML += `<div class="col-4 my-2 d-flex justify-content-center" data-id="${personaje.id}">
-            <div class="card" style="width: 25rem">
+    contenedor.innerHTML += `<div class="col-4 my-3 d-flex justify-content-center" data-id="${personaje.id}">
+            <div class="card bg-black text-warning" style="width: 25rem">
               <img src="${personaje.imagen}" class="card-img-top" alt="..." style="height: 25rem;"/>
               <div class="card-body">
                 <h5 class="card-title">${personaje.nombre}</h5>
@@ -69,12 +68,12 @@ contenedor.addEventListener("click", (e) => {
   if (e.target.classList.contains("btnEliminar")) {
     const cardSuperheroe = e.target.closest(".col-4");
     const idPersonaje = Number(cardSuperheroe.dataset.id);
-    //console.log(idPersonaje);
+
+    personajes = personajes.filter((personaje) => {
+      return personaje.id !== idPersonaje;
+    });
 
     cardSuperheroe.remove();
+    cargarSuperheroes();
   }
 });
-
-// btnEliminar.addEventListener("click", () => {
-//   const idPersonaje = btnEliminar.closest(".col-4").value;
-// });
