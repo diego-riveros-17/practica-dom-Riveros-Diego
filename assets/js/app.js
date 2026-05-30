@@ -77,3 +77,27 @@ contenedor.addEventListener("click", (e) => {
     cargarSuperheroes();
   }
 });
+
+//Creamos una constante que selecciona todo el formulario
+const formCargarSuperheroe = document.querySelector("#cargarSuperheroe");
+
+//Escucha el formulario se ejecuta en envio de datos
+//preventDefault evita que la pagina se regargue por completo
+// obtenemos los valores enviados en formulario
+//Lo cargamos en una constante con el formato de objeto para insertarlo en el arreglo
+formCargarSuperheroe.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const nombreSuperheroe = e.target.elements.nombreSuperheroe.value;
+  const urlSuperheroe = e.target.elements.imageSuperheroe.value;
+
+  const nuevoPersonaje = {
+    id: personajes.length + 1,
+    nombre: nombreSuperheroe,
+    imagen: urlSuperheroe,
+  };
+
+  personajes.push(nuevoPersonaje);
+  cargarSuperheroes(personajes);
+  formCargarSuperheroe.reset();
+});
