@@ -45,13 +45,13 @@ const contenedor = document.querySelector("#cardSuperheroe");
 const cargarSuperheroes = (listaPersonajes) => {
   contenedor.innerHTML = "";
 
-  listaPersonajes.forEach((personaje) => {
-    // console.log(personaje);
-    contenedor.innerHTML += `<div class="col-4 my-3 d-flex justify-content-center" data-id="${personaje.id}">
+  listaPersonajes.forEach(({ id, nombre, imagen }) => {
+    // console.log(id, nombre, imagen);
+    contenedor.innerHTML += `<div class="col-4 my-3 d-flex justify-content-center" data-id="${id}">
             <div class="card bg-black text-warning" style="width: 25rem">
-              <img src="${personaje.imagen}" class="card-img-top" alt="..." style="height: 25rem;"/>
+              <img src="${imagen}" class="card-img-top" alt="..." style="height: 25rem;"/>
               <div class="card-body">
-                <h5 class="card-title">${personaje.nombre}</h5>
+                <h5 class="card-title">${nombre}</h5>
               </div>
 
               <div class="card-body">
