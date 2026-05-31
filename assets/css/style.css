@@ -1,0 +1,7 @@
+.card-superheroe {
+  opacity: 0.5;
+}
+
+.card-superheroe:hover {
+  opacity: 1;
+}

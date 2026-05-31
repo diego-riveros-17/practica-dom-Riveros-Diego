@@ -10,8 +10,10 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <header
       class="bg-black d-flex flex-column justify-content-center align-items-center"
     >
@@ -19,6 +21,66 @@
     </header>
 
     <main>
+      <!-- Seccion agregar superheroe y buscar superheroe -->
+      <section class="container-fluid">
+        <div class="row p-4 justify-content-around">
+          <div class="list-group col-4">
+            <form id="cargarSuperheroe">
+              <div class="mb-3">
+                <label for="nombreSuperheroe" class="form-label"
+                  >Nombre SuperHeroe</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  name="nombreSuperheroe"
+                  id="nombreSuperheroe"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="imageSuperheroe" class="form-label"
+                  >Url imagen</label
+                >
+                <input
+                  type="url"
+                  class="form-control"
+                  name="imageSuperheroes"
+                  id="imageSuperheroe"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+                id="btnCargarSuperheroe"
+              >
+                Cargar SuperHeroe
+              </button>
+            </form>
+          </div>
+
+          <!-- Buscar superheroe -->
+          <div class="list-group col-4">
+            <form id="buscarSuperheroe">
+              <div class="mb-3">
+                <label for="nameSuperheroe" class="form-label"
+                  >Buscar por nombre</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  name="nameSuperheroe"
+                  id="nameSuperheroe"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
       <!-- Seccion cards personajes -->
       <section class="container-fluid">
         <div class="row text-center" id="cardSuperheroe"></div>
@@ -26,7 +88,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="py-3 my-4 mt-auto bg-black" id="footer">
+    <footer class="py-3 mt-auto bg-black" id="footer">
       <p class="text-center text-warning">&copy; 2026 SuperHeroes</p>
     </footer>
 
