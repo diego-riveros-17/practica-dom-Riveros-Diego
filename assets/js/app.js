@@ -48,7 +48,7 @@ const cargarSuperheroes = (listaPersonajes) => {
   listaPersonajes.forEach(({ id, nombre, imagen }) => {
     // console.log(id, nombre, imagen);
     contenedor.innerHTML += `<div class="col-4 my-3 d-flex justify-content-center" data-id="${id}">
-            <div class="card bg-black text-warning" style="width: 25rem">
+            <div class="card bg-black text-warning card-superheroe" style="width: 25rem">
               <img src="${imagen}" class="card-img-top" alt="..." style="height: 25rem;"/>
               <div class="card-body">
                 <h5 class="card-title">${nombre}</h5>
