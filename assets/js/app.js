@@ -42,10 +42,10 @@ const contenedor = document.querySelector("#cardSuperheroe");
 
 // });
 
-const cargarSuperheroes = () => {
+const cargarSuperheroes = (listaPersonajes) => {
   contenedor.innerHTML = "";
 
-  personajes.forEach((personaje) => {
+  listaPersonajes.forEach((personaje) => {
     // console.log(personaje);
     contenedor.innerHTML += `<div class="col-4 my-3 d-flex justify-content-center" data-id="${personaje.id}">
             <div class="card bg-black text-warning" style="width: 25rem">
@@ -62,7 +62,7 @@ const cargarSuperheroes = () => {
   });
 };
 
-cargarSuperheroes();
+cargarSuperheroes(personajes);
 
 contenedor.addEventListener("click", (e) => {
   if (e.target.classList.contains("btnEliminar")) {
@@ -74,7 +74,7 @@ contenedor.addEventListener("click", (e) => {
     });
 
     cardSuperheroe.remove();
-    cargarSuperheroes();
+    cargarSuperheroes(personajes);
   }
 });
 
@@ -100,4 +100,29 @@ formCargarSuperheroe.addEventListener("submit", (e) => {
   personajes.push(nuevoPersonaje);
   cargarSuperheroes(personajes);
   formCargarSuperheroe.reset();
+});
+
+//Creamos una constante que selecciona el input
+const inputBuscarSuperheroe = document.querySelector("#nameSuperheroe");
+
+//Escucha el formulario hasta que se ejecuta en envio de datos con el input
+// obtenemos los valores enviados en el input
+inputBuscarSuperheroe.addEventListener("input", (e) => {
+  const nombreSuperheroe = e.target.value.toUpperCase();
+
+  const personajeFiltrado = personajes.filter((personaje) => {
+    return personaje.nombre.toUpperCase().includes(nombreSuperheroe);
+  });
+
+  if (personajeFiltrado != "") {
+    cargarSuperheroes(personajeFiltrado);
+  } else {
+    contenedor.innerHTML = `<div class="row justify-content-center">
+                              <div class="col-4">
+                                  <div class="alert alert-danger" role="alert">
+                                    No se encontraron personajes
+                                  </div>
+                               </div>
+                             </div>`;
+  }
 });
