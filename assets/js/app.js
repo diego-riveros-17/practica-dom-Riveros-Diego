@@ -1,4 +1,4 @@
-let personajes = [
+const personajes = [
   {
     id: 1,
     nombre: "A-Bomb",
@@ -33,14 +33,10 @@ let personajes = [
 
 // console.log(personajes);
 
+let copiaPersonajes = personajes;
+//console.log(copiaPersonajes);
+
 const contenedor = document.querySelector("#cardSuperheroe");
-
-// console.log(contenedor);
-
-// const cargarSuperheroes = contenedor.addEventListener("click", () => {
-//   //   console.log("click");
-
-// });
 
 const cargarSuperheroes = (listaPersonajes) => {
   contenedor.innerHTML = "";
@@ -62,19 +58,19 @@ const cargarSuperheroes = (listaPersonajes) => {
   });
 };
 
-cargarSuperheroes(personajes);
+cargarSuperheroes(copiaPersonajes);
 
 contenedor.addEventListener("click", (e) => {
   if (e.target.classList.contains("btnEliminar")) {
     const cardSuperheroe = e.target.closest(".col-4");
     const idPersonaje = Number(cardSuperheroe.dataset.id);
 
-    personajes = personajes.filter((personaje) => {
+    copiaPersonajes = copiaPersonajes.filter((personaje) => {
       return personaje.id !== idPersonaje;
     });
 
     cardSuperheroe.remove();
-    cargarSuperheroes(personajes);
+    cargarSuperheroes(copiaPersonajes);
   }
 });
 
@@ -97,8 +93,8 @@ formCargarSuperheroe.addEventListener("submit", (e) => {
     imagen: urlSuperheroe,
   };
 
-  personajes.push(nuevoPersonaje);
-  cargarSuperheroes(personajes);
+  copiaPersonajes.push(nuevoPersonaje);
+  cargarSuperheroes(copiaPersonajes);
   formCargarSuperheroe.reset();
 });
 
@@ -110,7 +106,7 @@ const inputBuscarSuperheroe = document.querySelector("#nameSuperheroe");
 inputBuscarSuperheroe.addEventListener("input", (e) => {
   const nombreSuperheroe = e.target.value.toUpperCase();
 
-  const personajeFiltrado = personajes.filter((personaje) => {
+  const personajeFiltrado = copiaPersonajes.filter((personaje) => {
     return personaje.nombre.toUpperCase().includes(nombreSuperheroe);
   });
 
